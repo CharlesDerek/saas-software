@@ -18,6 +18,15 @@ https://stackoverflow.com/questions/19828385/pgconnectionbad-could-not-connect-t
 
 finish initial edits (versions etc) before deploy..
 
+***make sure for heroku's sake! Gemfile has ruby version written on top like this first:
+
+    //ruby -v tells you the active version
+    
+    {
+    source "https://rubygems.org"
+    ruby "2.2.4"
+    }
+
 Phase 2: Push project
 Git Init
     a) Set up git link to new account
@@ -34,7 +43,14 @@ Git Init
         $git push
         
         
-    Set up with heroku
+    b) Set up with heroku
+        $ heroku create
+            input cred
+        $ heroku rename nenameofapp
+        $ git status #making sure there are no needed commits got git first
+        $ git push heroku master
+        
+    
     Set up Sendgrid
     Set up stp
     
