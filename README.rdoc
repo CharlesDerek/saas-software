@@ -16,10 +16,24 @@ will possibly say issues with postgres id (from copied app) is already in use. S
 The link below will explain the issue with grabbing a finished project already having a pg db id (in files database.yml)
 https://stackoverflow.com/questions/19828385/pgconnectionbad-could-not-connect-to-server-connection-refused
 
+finish initial edits (versions etc) before deploy..
 
 Phase 2: Push project
 Git Init
-    Set up git link to new account
+    a) Set up git link to new account
+        $ git init
+        $ git status
+        $ git add -A
+        $ git commit -m "Initial Deploy"
+        
+        go to github site and manke new repo (make name same as project folder)
+        
+        follow steps under "..or push an existing repository from the command line"
+        copy and paste the two lines into command line
+        
+        $git push
+        
+        
     Set up with heroku
     Set up Sendgrid
     Set up stp
