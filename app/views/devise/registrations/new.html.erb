@@ -1,20 +1,27 @@
-<script language="JavaScript">
-  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
-</script>
 
-<%= bootstrap_devise_error_messages! %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4><%= t('.sign_up', :default => "Sign up") %></h4>
+    <h4>
+    <%= t('.sign_up', :default => "Sign up") %>
+    </h4>
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
+
+
+
+
+
+
+
+
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :password %><br />
+        <%= f.label :password %>
+        <br />
         <%= f.password_field :password, class: "form-control" %>
       </div>
       <div class="form-group">
@@ -71,3 +78,135 @@
   </div>
 </div>
 <%= render "devise/shared/links" %>
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript">
+  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+</script>
+
+<%= bootstrap_devise_error_messages! %>
+
+<div class="sec sec--hero">
+  <div class="cont">
+    <div class="cont--small">
+      <div class="text--center">
+        <div class="angle-container angle-container--form">
+          <div class="angle--top">
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="gap--big">
+            <h1 class="h1--form-login">Ready to grow your clientele exponentially? Get a quote membership below!</h1>
+          </div>
+          <div class="w-form" data-ix="fade-effect">
+
+
+
+
+
+
+
+
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'form' }) do |f| %>
+              <div class="w-row">
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <label for="firstname" class="field-label">First name 
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <input type="text" class="input--text w-input" maxlength="256" autofocus="true" name="firstname" data-name="firstname" id="firstname" required=""/>
+                  </div>
+                  <div class="gap--med">
+                    <label for="lastname" class="field-label">Last name 
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <input type="text" id="lastname" name="lastname" data-name="lastname" maxlength="256" required="" class="input--text w-input"/>
+                  </div>
+                  <div class="gap--med">
+                    <label for="email" class="field-label">Work email <span class="field-label--required">(required)</span>
+                    </label>
+                    <%= f.email_field :email, autofocus: true, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "new@example.com", required: "true" %>
+
+                    <input type="email" class="input--text w-input" maxlength="256" name="email" data-name="email" placeholder="work@email.com" id="email" required=""/>
+                  </div>
+                </div>
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <label for="firm" class="field-label">Practice / Firm name 
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <input type="text" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
+                  </div>
+                  <div class="gap--med">
+                    <label for="location-2" class="field-label">Company location 
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <div class="input--text input--text-select">
+                      <select id="location" name="location" data-name="location" class="input--select w-select">
+                        <option value="">
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="gap--med">
+                    <label for="phone" class="field-label">Phone number</label>
+                    <input type="text" id="phone" name="phone" data-name="phone" maxlength="256" placeholder="+44 8080 808880" class="input--text w-input"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-error">
+                  <div class="form-error--text">Error message.</div>
+                </div>
+              </div>
+              <textarea id="TextBox" name="TextBox" placeholder="Further describe why you&#x27;d like to use our services." maxlength="5000" data-name="TextBox" class="new-textbox-regist w-input">
+              </textarea>
+              <div class="gap--small">
+                <div data-ix="button-hover" class="submit-container">
+                  <input type="submit" value=" " data-wait="Please wait..." class="button button-submit w-button"/>
+                  <div class="send-to-back">
+                    <a href="#" id="submit-form" class="buttonconversion w-inline-block">
+                      <div class="button--move">
+                        <div class="button--ico-left">
+                          <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a15d29e58352800010eae17_%5Bautoentry%5Dbtn-arrow-white.svg" width="12" class="image-3"/>
+                        </div>
+                        <div class="button--text">Submit
+                        </div>
+                        <div class="button--ico-right">
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="w-form-done">
+              <div id="form-feedback">Thank you! Your submission has been received!
+              </div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form</div>
+            </div>
+          </div>
+          <p>Already have an account? 
+            <a href="/login" class="link--inline link--inline_alernative">Log in</a>.
+          </p>
+        </div>
+        <div class="angle-container angle-container--form">
+          <div class="angle--bottom">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,5 +1,7 @@
 == README
 
+current == L 68 -->
+
 Phase 1: Merge Saas Project with Rsoftware Template
 need to first create an rails app with { rails new newappname }
 
@@ -54,8 +56,60 @@ Git Init
     Set up Sendgrid
     Set up stp
     
+view_devise_registrations_new.html
 
-Phase 3: Follow private message on adding keys including all written security measures
+
+Phase 3.0 Making Custom Css interact with framework
+				Merge a) index page (logged out)
+				    *finished
+				Merge a.2 navbar for entire application
+				    *finished
+					• Fix logic on paths if signed in or signed out
+					*current
+					
+					---
+					1. find " view_devise_registrations_new.html ", in recoveryunit.wf folder on pc
+					last fix between lines 
+					#111 - #117
+					
+					---
+					
+					
+					
+				Fix spacers between navigation, and application.html - render paths
+				Merge b) sign up page
+				Merge c) sign in page
+				Merge d) forgot password page
+				Merge d.2 resend forgot p# "/users/confirmation/new"
+					Webflow
+				Merge e) index (logged in) path
+					Webflow version
+				Merge f) (logged in) project "/tenants/1/projects/1" page
+					Uses templates of page E
+				Merge g) New Artifact page "/artifacts/new?project_id=#"
+					Uses templates of page A-D
+				Merge h) "Members/new"
+					Uses templates of page A-D
+				Merge i) "/plan/edit"
+					Uses templates of page A-D
+				Merge j) "/users/edit"
+					Uses templates of page A-D
+				Merge k) "/tenants/1/projects/1/users"
+					Webflow version
+						Uses templates of page E
+				Merge L) "/tenants/1/projects/1/edit"
+					Webflow version
+						Uses Template of page E and also calendar Widget
+				Make support path
+					Connect navbar with support page
+			Outline steps in the readme file (not private)
+			Outline steps  keep all outlined steps inside readme file
+	Push well developed application to heroku 
+		This means fixing depreciated messages
+
+
+
+Phase 3.1: Follow private message on adding keys including all written security measures
 
 Phase 4: DP from heroku to GAE
 
