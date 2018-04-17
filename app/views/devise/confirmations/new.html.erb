@@ -1,18 +1,69 @@
 <%= bootstrap_devise_error_messages! %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><%= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions') %></h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control"  %>
-      </div>
 
-      <%= f.submit t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions'), class: "btn btn-primary" %>
-    <% end %>
+<div class="sec sec--hero">
+  <div class="cont">
+    <div class="cont--small">
+      <div class="text--center">
+        <div class="angle-container angle-container--form">
+          <div class="angle--top">
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="gap--big">
+            <h1 class="h1--form-login"><%= t('.resend_confirmation_instructions', :default => 'Resend confirmation instructions') %></h1>
+          </div>
+          <div class="w-form" data-ix="fade-effect">
+
+            <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
+              <div class="w-row">
+                <div class="gap--med">
+                  <label for="email" class="field-label">Account email</label>
+                  <%= f.email_field :email, autofocus: true, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "user@example.com", required: "true" %>
+                </div>
+                <div class="col">
+                  <div class="form-error">
+                    <div class="form-error--text">Error message.</div>
+                  </div>
+                </div>
+                <div class="gap--small">
+                  <div data-ix="button-hover" class="submit-container">
+                    <%= f.submit t('.resend_confirmation_instructions', :default => 'Resend'), value: "", class: "button button-submit w-button" %>
+                      <div class="send-to-back">
+                        <a href="#" id="submit-form" class="buttonconversion w-inline-block">
+                          <div class="button--move">
+                            <div class="button--text">Resend
+                            </div>
+                            <div class="button--ico-right">
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                  </div>
+                </div>
+            <% end %>
+            <div class="w-form-done">
+              <div id="form-feedback">Thank you! Your submission has been received!
+              </div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form</div>
+            </div>
+          </div>
+        </div>
+        <div class="angle-container angle-container--form">
+          <div class="angle--bottom">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+<!-- Below is the ruby tag for links to include html raw -->
+<!--< %= link_to(raw("lalalalhtmlallalalalal"),{:pics => true},{ :class => 'highlight'})  % >-->
+
+
 
 <%= render "devise/shared/links" %>

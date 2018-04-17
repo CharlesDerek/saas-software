@@ -1,37 +1,3 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><%= t('.sign_in', :default => "Sign in") %></h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      </div>
-      <% if devise_mapping.rememberable? %>
-        <div class="checkbox">
-          <label>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </label>
-        </div>
-        <% end %>
-      <%= f.submit  t('.sign_in', :default => "Sign in"), class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-<%= render "devise/shared/links" %>
-
-
-
-
-
-
-
 
 <%= bootstrap_devise_error_messages! %>
 
@@ -59,7 +25,7 @@
                     <label for="firm" class="field-label">Account Password
                       <span class="field-label--required">(required)</span>
                     </label>
-                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
+                    <%= f.password_field :password, type: "Password", autocomplete: "off", class: "input--text w-input", required: "true", maxlength: "256" %>
                   </div>
                 <div class="col w-col w-col-6">
                   <div class="gap--med">
@@ -73,107 +39,6 @@
                     <% end %>
                   </div>
                 </div>
-                <div class="col w-col w-col-6">
-                  <div class="gap--med">
-                    <label for="firstname" class="field-label">First name 
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="text" class="input--text w-input" maxlength="256" autofocus="true" name="firstname" data-name="firstname" id="firstname" required=""/>
-                  </div>
-                  <div class="gap--med">
-                    <label for="lastname" class="field-label">Last name 
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="text" id="lastname" name="lastname" data-name="lastname" maxlength="256" required="" class="input--text w-input"/>
-                  </div>
-                </div>               
-                <%= fields_for( :tenant ) do |w| %>
-                  <div class="col w-col w-col-6">
-                    <div class="gap--med">
-                      <label for="phone" class="field-label">Phone number</label>
-                      <input type="text" id="phone" name="phone" data-name="phone" maxlength="256" placeholder="+44 8080 808880" class="input--text w-input"/>
-                    </div>
-                    <div class="gap--med">
-                      <label for="firm" class="field-label">Plan
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
-          class: "input--text w-input" %>
-                    </div>
-                    <div class="gap--med">
-                      <label for="location-2" class="field-label">Company location 
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <div class="input--text input--text-select">
-                        <select id="location" name="location" data-name="location" class="input--select w-select">
-                          <option value="">
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="w-row">
-                    <div class="gap--med">
-                      <label for="firm" class="field-label">Practice / Firm name 
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= w.text_field :name, required: true, class: "input--text w-input", maxlength: "256", placeholder: "Unique Name of Organization" %>
-                    </div>
-
-                <%= fields_for( :payment ) do |p| %>
-                  <div class="col w-col w-col-6">
-                    <div class="gap--med">
-                      <label for="card_number" class="field-label">Card Number
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16", required: true %>
-                    </div>
-                    <div class="gap--med">
-                      <label for="card_cvv" class="field-label">Card CVV <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= p.text_field :card_cvv, class: "input--text w-input", maxlength: "4", required: true,
-                               data: { stripe: 'cvv' }  %>
-                    </div>
-                  </div>
-                  <div class="col w-col w-col-6">
-                    <div class="gap--med">
-
-                      <label for="card_expires" class="field-label">Card Expires (Month)
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= p.select :card_expires_month,
-                                   options_for_select(Payment.month_options),
-                                   { include_blank: 'Month' },
-                                   "data-stripe" => "exp-month",
-                                   class: "input--text w-input", required: true  %>
-                    </div>
-                    <div class="gap--med">
-                      <label for="card_expires" class="field-label">Card Expires (Year)
-                        <span class="field-label--required">(required)</span>
-                      </label>
-                      <%= p.select :card_expires_year,
-                                   options_for_select(Payment.year_options.push),
-                                     { include_blank: 'Year' },
-                                   class: "input--text w-input",
-                                   data: { stripe: "exp-year"}, required: true  %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-              <div class="w-row">
-                <div class="col w-col w-col-6">
-                </div>
-                <div class="col w-col w-col-6">
-                  <div class="gap--med">
-                    <label for="firm" class="field-label">Password Confirmation
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
-                  </div>
-                </div>
-              <% end %>
-            </div>
 
 
 
@@ -185,14 +50,9 @@
                   <div class="form-error--text">Error message.</div>
                 </div>
               </div>
-              
-              <div class="gap--med">
-                <textarea placeholder="Further describe why you would like to use our services (not required)." maxlength="5000" class="new-textbox-regist w-input"></textarea>
-              </div>
               <div class="gap--small">
                 <div data-ix="button-hover" class="submit-container">
-
-                  <%= f.submit t('.sign_up'), value: "", class: "button button-submit w-button" %>
+                  <%= f.submit  t('.sign_in', :default => "Sign in"), value: "", class: "button button-submit w-button" %>
                   <div class="send-to-back">
                     <a href="#" id="submit-form" class="buttonconversion w-inline-block">
                       <div class="button--move">
@@ -214,9 +74,6 @@
               <div>Oops! Something went wrong while submitting the form</div>
             </div>
           </div>
-          <p>Already have an account? 
-            <a href="/users/sign_in" class="link--inline link--inline_alernative">Log in</a>.
-          </p>
         </div>
         <div class="angle-container angle-container--form">
           <div class="angle--bottom">
