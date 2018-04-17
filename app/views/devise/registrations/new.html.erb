@@ -1,105 +1,5 @@
 
 
-<!-- Below is the ruby tag for links to include html raw -->
-<%= link_to(raw("a <strong>strong</strong> link"),{:pics => true},{ :class => 'button button--open button--open--bright w-inline-block'})  %>
-
-
-
-
-
-
-
-
-
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4>
-    <%= t('.sign_up', :default => "Sign up") %>
-    </h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
-
-
-
-
-
-              
-
-
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password %>
-        <br />
-        <%= f.password_field :password, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: "form-control" %>
-      </div>
-      <%= fields_for( :tenant ) do |w| %>
-        <div class="form-group col-md-6 no-left-padding">
-          <%= w.label :name, 'Organization' %>
-          <span class='description'>(Unique name for your group or organization for the new account)</span>
-          <%= w.text_field :name, required: true, class: "form-control" %>
-        </div>
-        <div class="form-group col-md-6 no-right-padding">
-          <%= w.label :plan %>
-          <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
-          class: "form-control" %>
-        </div>
-        <%= fields_for( :payment ) do |p| %>
-          <div class="row col-md-12">
-            <div class="form-group col-md-4 no-left-padding">
-              <%= p.label :card_number, "Card Number", data: { stripe: 'label' } %>
-              <%= p.text_field :card_number, class: "form-control", required: true,
-                               data: { stripe: 'number' }  %>
-            </div>
-            <div class="form-group col-md-2">
-              <%= p.label :card_cvv, "Card CVV", data: { stripe: 'label' } %>
-              <%= p.text_field :card_cvv, class: "form-control", required: true,
-                               data: { stripe: 'cvv' }  %>
-            </div>
-            <div class="form-group col-md-6">
-              <div class="col-md-12">
-                <%= p.label :card_expires, "Card Expires", data: { stripe: 'label' } %>
-              </div>
-              <div class="col-md-3">
-                <%= p.select :card_expires_month,
-                             options_for_select(Payment.month_options),
-                             { include_blank: 'Month' },
-                             "data-stripe" => "exp-month",
-                             class: "form-control", required: true  %>
-              </div>
-              <div class="col-md-3">
-                <%= p.select :card_expires_year,
-                             options_for_select(Payment.year_options.push),
-                               { include_blank: 'Year' },
-                             class: "form-control",
-                             data: { stripe: "exp-year"}, required: true  %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-      <%= f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-<%= render "devise/shared/links" %>
-
-
-
-
-
-
-
-
-
-
 
 <script language="JavaScript">
   Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
@@ -117,7 +17,7 @@
         </div>
         <div class="form-container">
           <div class="gap--big">
-            <h1 class="h1--form-login">Ready to grow your clientele exponentially? Get a quote membership below!</h1>
+            <h1 class="h1--form-login">Ready to get results? Sign Up Below!</h1>
           </div>
           <div class="w-form" data-ix="fade-effect">
             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'form' }) do |f| %>
@@ -140,63 +40,106 @@
                     </label>
                     <%= f.email_field :email, autofocus: true, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "new@example.com", required: "true" %>
                   </div>
-                </div>
-
-<!-- OUR PLAN IS TO MERGE THE BELOW SECTION OF THE EXSISTING PART OF ORIGINAL FORM -->
-<!-- 
-< %= fields_for( :tenant ) do |w| %>
-        <div class="form-group col-md-6 no-left-padding">
-          < %= w.label :name, 'Organization' %>
-          <span class='description'>(Unique name for your group or organization for the new account)</span>
-          < %= w.text_field :name, required: true, class: "form-control" %>
-        </div>
-        <div class="form-group col-md-6 no-right-padding">
-          < %= w.label :plan %>
-          < %= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
-          class: "form-control" %>
-        </div>
- -->
-<!-- OUR PLAN IS TO MERGE THE ABOVE SECTION OF THE EXSISTING PART OF ORIGINAL FORM WITH FIELD RIGHT BELOW -->
-
-                <div class="col w-col w-col-6">
-                  <div class="gap--med">
-                    <label for="firm" class="field-label">NEW FIELD 
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="text" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
-                  </div>
-                  <div class="gap--med">
-                    <label for="firm" class="field-label">Text Area
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="text" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
-                  </div>
-                </div>
-
-                <div class="col w-col w-col-6">
-                  <div class="gap--med">
-                    <label for="firm" class="field-label">Practice / Firm name 
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <input type="text" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
-                  </div>
-                  <div class="gap--med">
-                    <label for="location-2" class="field-label">Company location 
-                      <span class="field-label--required">(required)</span>
-                    </label>
-                    <div class="input--text input--text-select">
-                      <select id="location" name="location" data-name="location" class="input--select w-select">
-                        <option value="">
-                        </option>
-                      </select>
+                </div>               
+                <%= fields_for( :tenant ) do |w| %>
+                  <div class="col w-col w-col-6">
+                    <div class="gap--med">
+                      <label for="phone" class="field-label">Phone number</label>
+                      <input type="text" id="phone" name="phone" data-name="phone" maxlength="256" placeholder="+44 8080 808880" class="input--text w-input"/>
+                    </div>
+                    <div class="gap--med">
+                      <label for="firm" class="field-label">Plan
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
+          class: "input--text w-input" %>
+                    </div>
+                    <div class="gap--med">
+                      <label for="location-2" class="field-label">Company location 
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <div class="input--text input--text-select">
+                        <select id="location" name="location" data-name="location" class="input--select w-select">
+                          <option value="">
+                          </option>
+                        </select>
+                      </div>
                     </div>
                   </div>
+              </div>
+              <div class="w-row">
+                    <div class="gap--med">
+                      <label for="firm" class="field-label">Practice / Firm name 
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= w.text_field :name, required: true, class: "input--text w-input", maxlength: "256", placeholder: "Unique Name of Organization" %>
+                    </div>
+
+                <%= fields_for( :payment ) do |p| %>
+                  <div class="col w-col w-col-6">
+                    <div class="gap--med">
+                      <label for="card_number" class="field-label">Card Number
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16", required: true %>
+                    </div>
+                    <div class="gap--med">
+                      <label for="card_cvv" class="field-label">Card CVV <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= p.text_field :card_cvv, class: "input--text w-input", maxlength: "4", required: true,
+                               data: { stripe: 'cvv' }  %>
+                    </div>
+                  </div>
+                  <div class="col w-col w-col-6">
+                    <div class="gap--med">
+
+                      <label for="card_expires" class="field-label">Card Expires (Month)
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= p.select :card_expires_month,
+                                   options_for_select(Payment.month_options),
+                                   { include_blank: 'Month' },
+                                   "data-stripe" => "exp-month",
+                                   class: "input--text w-input", required: true  %>
+                    </div>
+                    <div class="gap--med">
+                      <label for="card_expires" class="field-label">Card Expires (Year)
+                        <span class="field-label--required">(required)</span>
+                      </label>
+                      <%= p.select :card_expires_year,
+                                   options_for_select(Payment.year_options.push),
+                                     { include_blank: 'Year' },
+                                   class: "input--text w-input",
+                                   data: { stripe: "exp-year"}, required: true  %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <div class="w-row">
+                <div class="col w-col w-col-6">
                   <div class="gap--med">
-                    <label for="phone" class="field-label">Phone number</label>
-                    <input type="text" id="phone" name="phone" data-name="phone" maxlength="256" placeholder="+44 8080 808880" class="input--text w-input"/>
+                    <label for="firm" class="field-label">Account New Password
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
                   </div>
                 </div>
-              </div>
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <label for="firm" class="field-label">Password Confirmation
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+
+
+
+
+
               <div class="col">
                 <div class="form-error">
                   <div class="form-error--text">Error message.</div>
@@ -204,17 +147,15 @@
               </div>
               
               <div class="gap--med">
-                <textarea placeholder="Further describe why you wouldd like to use our services (not required)." maxlength="5000" class="new-textbox-regist w-input"></textarea>
+                <textarea placeholder="Further describe why you would like to use our services (not required)." maxlength="5000" class="new-textbox-regist w-input"></textarea>
               </div>
               <div class="gap--small">
                 <div data-ix="button-hover" class="submit-container">
-                  <input type="submit" value=" " data-wait="Please wait..." class="button button-submit w-button"/>
+
+                  <%= f.submit t('.sign_up'), value: "", class: "button button-submit w-button" %>
                   <div class="send-to-back">
                     <a href="#" id="submit-form" class="buttonconversion w-inline-block">
                       <div class="button--move">
-                        <div class="button--ico-left">
-                          <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a15d29e58352800010eae17_%5Bautoentry%5Dbtn-arrow-white.svg" width="12" class="image-3"/>
-                        </div>
                         <div class="button--text">Submit
                         </div>
                         <div class="button--ico-right">
@@ -234,7 +175,7 @@
             </div>
           </div>
           <p>Already have an account? 
-            <a href="/login" class="link--inline link--inline_alernative">Log in</a>.
+            <a href="/users/sign_in" class="link--inline link--inline_alernative">Log in</a>.
           </p>
         </div>
         <div class="angle-container angle-container--form">
@@ -249,18 +190,8 @@
 
 
 <!-- Below is the ruby tag for links to include html raw -->
-<%= link_to(raw("lalalalallalalalal
-                  "),{:pics => true},{ :class => 'highlight'})  %>
+<!--< %= link_to(raw("lalalalhtmlallalalalal"),{:pics => true},{ :class => 'highlight'})  % >-->
 
 
-<a data-ix="button-hover" href="/users/sign_up?plan=free" class="button button--open button--open--bright w-inline-block">
-                        <div class="button--move">
-                          <div class="button--ico-left">
-                            <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a15d29e58352800010eae12_%5Bautoentry%5Dbtn-arrow-crimson.svg" width="8">
-                          </div>
-                          <div class="button--text">Trial</div>
-                          <div class="button--ico-right">
-                            <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a15d29e58352800010eae12_%5Bautoentry%5Dbtn-arrow-crimson.svg" width="8">
-                          </div>
-                        </div>
-                      </a>
+
+<%= render "devise/shared/links" %>
