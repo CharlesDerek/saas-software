@@ -1,5 +1,5 @@
 
-<%= bootstrap_devise_error_messages! %>
+
 
 <div class="sec sec--hero">
   <div class="cont">
@@ -12,6 +12,7 @@
         <div class="form-container">
           <div class="gap--big">
             <h1 class="h1--form-login">Welcome Back!</h1>
+            <%= bootstrap_devise_error_messages! %>
           </div>
           <div class="w-form" data-ix="fade-effect">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
@@ -56,7 +57,7 @@
                   <div class="send-to-back">
                     <a href="#" id="submit-form" class="buttonconversion w-inline-block">
                       <div class="button--move">
-                        <div class="button--text">Submit
+                        <div class="button--text">Login
                         </div>
                         <div class="button--ico-right">
                         </div>

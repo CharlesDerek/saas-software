@@ -60,6 +60,9 @@ view_devise_registrations_new.html
 
 
 Phase 3.0 Making Custom Css interact with framework
+
+
+
 				Merge a) index page (logged out)
 				    *finished
 				Merge a.2 navbar for entire application
@@ -117,6 +120,8 @@ Phase 4: DP from heroku to GAE
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+
+
 Things you may want to cover:
 
 * Ruby version
@@ -144,4 +149,21 @@ Please feel free to use a different markup language if you do not plan to run
 
 rails s -b $IP -p $PORT
 
+
+
+
 ${ sudo service postgresql start } Restarts postgres crashed server (make sure to migrate db afterwards
+
+
+
+
+
+
+
+
+Last issues arrising 
+A) Has issues showing successful redirect out of sign up page
+ 1. Check testing new user adding with removing application.js and adding on application.html.erb
+ 2. if doesn't work try checking form on registrations/new.html.erb
+ 3. else, try looking into controller files and see if redirect issue is there
+ 4. else, check stripe javascript file to see if this plays a role in showing proper pages 

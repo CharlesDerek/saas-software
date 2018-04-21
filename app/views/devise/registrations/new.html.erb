@@ -81,36 +81,37 @@
                       <label for="card_number" class="field-label">Card Number
                         <span class="field-label--required">(required)</span>
                       </label>
-                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16", required: true %>
+                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16" %>
                     </div>
                     <div class="gap--med">
                       <label for="card_cvv" class="field-label">Card CVV <span class="field-label--required">(required)</span>
                       </label>
-                      <%= p.text_field :card_cvv, class: "input--text w-input", maxlength: "4", required: true,
+                      <%= p.text_field :card_cvv, class: "input--text w-input", maxlength: "4",
                                data: { stripe: 'cvv' }  %>
                     </div>
                   </div>
                   <div class="col w-col w-col-6">
                     <div class="gap--med">
 
-                      <label for="card_expires" class="field-label">Card Expires (Month)
+                      <label for="card_expires"  data-stripe="exp-month" class="field-label">Card Expires (Month)
                         <span class="field-label--required">(required)</span>
                       </label>
                       <%= p.select :card_expires_month,
                                    options_for_select(Payment.month_options),
                                    { include_blank: 'Month' },
                                    "data-stripe" => "exp-month",
-                                   class: "input--text w-input", required: true  %>
+                                   class: "input--text w-input"  %>
                     </div>
                     <div class="gap--med">
-                      <label for="card_expires" class="field-label">Card Expires (Year)
+                      <label for="card_expires" data-stripe="exp-year" class="field-label">Card Expires (Year)
                         <span class="field-label--required">(required)</span>
                       </label>
+
                       <%= p.select :card_expires_year,
                                    options_for_select(Payment.year_options.push),
                                      { include_blank: 'Year' },
                                    class: "input--text w-input",
-                                   data: { stripe: "exp-year"}, required: true  %>
+                                   data: { stripe: "exp-year"}  %>
                     </div>
                   </div>
                 <% end %>
@@ -121,7 +122,7 @@
                     <label for="firm" class="field-label">Account New Password
                       <span class="field-label--required">(required)</span>
                     </label>
-                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
+                    <%= f.password_field :password, type: "Password", maxlength: "256", required: "true", class: "input--text w-input" %>
                   </div>
                 </div>
                 <div class="col w-col w-col-6">
@@ -129,7 +130,7 @@
                     <label for="firm" class="field-label">Password Confirmation
                       <span class="field-label--required">(required)</span>
                     </label>
-                    <input type="Password" id="firm" name="firm" data-name="firm" maxlength="256" required="" class="input--text w-input"/>
+                    <%= f.password_field :password_confirmation, required: "true", maxlength: "256", class: "input--text w-input" %>
                   </div>
                 </div>
               <% end %>
@@ -184,11 +185,3 @@
   </div>
 </div>
 
-
-
-<!-- Below is the ruby tag for links to include html raw -->
-<!--< %= link_to(raw("lalalalhtmlallalalalal"),{:pics => true},{ :class => 'highlight'})  % >-->
-
-
-
-<%= render "devise/shared/links" %>

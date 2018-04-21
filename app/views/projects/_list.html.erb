@@ -1,3 +1,7 @@
+
+<h3 class="pull-right">Organization: <%= @tenant.name %></h3>
+
+
 <%- model_class = Project -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -17,7 +21,7 @@
         <tr>
           <td><%= link_to project.title,
                 tenant_project_path(project, tenant_id: @tenant.id), class: 'main-link' %></td>
-          <td><%= project.details %></td>
+          <td><%= truncate(project.details, :length => 15, :separator => ' ') %></td>
           <td><%= project.expected_completion_date %></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -39,7 +43,74 @@
   <p class="lead">You don't have any projects</p>
 <% end %>
 
-<% if (@tenant.can_create_projects?) %>
-  <%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
-            :class => 'btn btn-primary' %>
+
+
+
+
+
+<!--BELOW IS THE NEW PROJECTS LIST-->
+<%- model_class = Project -%>
+
+      <div class="navspacer">
+  <!--       <div class="flash-m" data-ix="fade-effect-smooth">
+          <h4 class="flash-text">Warning Messages</h4>
+          <h4 class="flash-text-success">Success Messages</h4>
+          <h4 class="flash-text-danger">Danger Messages</h4>
+        </div> -->
+      </div>
+      <div class="proj-sect">
+        <% if @projects.size > 0 %>
+
+          <% @projects.each do |project| %>
+          <div class="proj-cont w-container">
+            <div class="proj-row w-row" data-ix="fade-effect-smooth">
+              <div class="w-col w-col-6 w-col-small-small-stack">
+                <h2 class="heading-4"><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h2>
+              </div>
+              <div class="w-clearfix w-col w-col-6 w-col-small-small-stack">
+                <h3 class="organization"><em>Organization:     <%= @tenant.name %></em></h3>
+              </div>
+            </div>
+            <div class="title-row w-row" data-ix="fade-effect-smooth">
+              <div class="w-col w-col-2">
+                <h4 class="projects-col-titles"><%= model_class.human_attribute_name(:title) %></h4>
+                <h5 class="projects-col-text"><%= link_to project.title,
+                tenant_project_path(project, tenant_id: @tenant.id), class: 'main-link' %></h5>
+              </div>
+              <div class="w-col w-col-3">
+                <h4 class="projects-col-titles"><%= model_class.human_attribute_name(:details) %></h4>
+                <h5 class="projects-col-text"><%= truncate(project.details, :length => 15, :separator => ' ') %></h5>
+              </div>
+              <div class="w-col w-col-5">
+                <h4 class="projects-col-titles"><%= model_class.human_attribute_name(:expected_completion_date) %></h4>
+                <h5 class="projects-col-text"><%= project.expected_completion_date %></h5>
+              </div>
+              <div class="w-col w-col-2">
+                <h4 class="projects-col-titles"><%=t '.actions', :default => t("helpers.actions") %></h4><a href="#" class="button-2 w-button">Edit</a><a href="#" class="button-2 w-button">Edit Users</a><a href="#" class="button-2-danger w-button">Delete</a></div>
+            </div>
+          </div>
+          <% end %>
+        <% else %>
+          <h1 class="lead">You don't have any projects to list.</h1>
+      </div>
+      <div></div>
+      <div class="angle-container">
+        <div class="angle--top"></div>
+        <div class="angle-title">
+          <div class="jumbo" data-ix="fade-effect">Benefits</div>
+        </div>
+      </div>
+
+
 <% end %>
+
+      <% if (@tenant.can_create_projects?) %>
+        <%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
+              :class => 'btn btn-primary' %>
+      <% end %>
+
+<%= truncate("Once upon a time in a world far far away", :length => 20, :separator => ' ') %>
+
+
+<%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
+              :class => 'btn btn-primary' %>

@@ -11,7 +11,7 @@
     <%= csrf_meta_tags %>
   <meta content="Automated recovery software. RSoftware is a repossession software management system solution." name="description"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <link href="https://uploads-ssl.webflow.com/5a15d29e58352800010ead96/css/recoveryunit.83860b7a2.min.css" rel="stylesheet" type="text/css"/>
+  <link href="https://uploads-ssl.webflow.com/5a15d29e58352800010ead96/css/recoveryunit.7693b9510.min.css" rel="stylesheet" type="text/css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript">
   </script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"]  }});</script>
@@ -66,7 +66,15 @@
 
 
 
-
+  </section>
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
@@ -116,7 +124,9 @@
             <div class="footer-legend">
               <div class="col">
                 <div class="footer-logo">
-                  <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a555d2729f1720001df2b43_32icon.png" class="img--footer-logo"/>
+                  <a href="/" >
+                    <img src="http://uploads.webflow.com/5a15d29e58352800010ead96/5a555d2729f1720001df2b43_32icon.png" class="img--footer-logo"/>
+                  </a>
                 </div>
                 <div class="text--center">
                   <div class="copyright">© The Recovery Unit 2010 - 2018<br/>Application designed and developed by:  
@@ -131,14 +141,6 @@
     </section>
 
 
-
-
-
-
-
-
-    
-  </section>
 
 
 
@@ -167,5 +169,8 @@
       
       
     </script>
+    
+    <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+    <%= javascript_include_tag "application" %>
 </body>
 </html>
