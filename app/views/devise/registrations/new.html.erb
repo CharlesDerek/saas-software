@@ -1,11 +1,10 @@
 
 
-
 <script language="JavaScript">
   Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
 </script>
 
-<%= bootstrap_devise_error_messages! %>
+<%= devise_error_messages! %>
 
 <div class="sec sec--hero">
   <div class="cont">
@@ -78,15 +77,16 @@
                 <%= fields_for( :payment ) do |p| %>
                   <div class="col w-col w-col-6">
                     <div class="gap--med">
-                      <label for="card_number" class="field-label">Card Number
+                      <label for="card_number" data-stripe="label" class="field-label">Card Number
                         <span class="field-label--required">(required)</span>
                       </label>
-                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16" %>
+                      <%= p.text_field :card_number, class: "input--text w-input", maxlength: "16", required: true,
+                               data: { stripe: 'number' }  %>
                     </div>
                     <div class="gap--med">
                       <label for="card_cvv" class="field-label">Card CVV <span class="field-label--required">(required)</span>
                       </label>
-                      <%= p.text_field :card_cvv, class: "input--text w-input", maxlength: "4",
+                      <%= p.text_field :card_cvv, class: "input--text w-input", required: true, maxlength: "4",
                                data: { stripe: 'cvv' }  %>
                     </div>
                   </div>
@@ -99,7 +99,7 @@
                       <%= p.select :card_expires_month,
                                    options_for_select(Payment.month_options),
                                    { include_blank: 'Month' },
-                                   "data-stripe" => "exp-month",
+                                   "data-stripe" => "exp-month", required: true,
                                    class: "input--text w-input"  %>
                     </div>
                     <div class="gap--med">
@@ -110,7 +110,7 @@
                       <%= p.select :card_expires_year,
                                    options_for_select(Payment.year_options.push),
                                      { include_blank: 'Year' },
-                                   class: "input--text w-input",
+                                   class: "input--text w-input", required: true,
                                    data: { stripe: "exp-year"}  %>
                     </div>
                   </div>
@@ -153,7 +153,7 @@
               <div class="gap--small">
                 <div data-ix="button-hover" class="submit-container">
 
-                  <%= f.submit t('.sign_up'), value: "", class: "button button-submit w-button" %>
+                  <%= f.submit t('.sign_up', :default => "Sign up"), value: "", class: "button button-submit w-button" %>
                   <div class="send-to-back">
                     <a href="#" id="submit-form" class="buttonconversion w-inline-block">
                       <div class="button--move">
@@ -184,4 +184,6 @@
     </div>
   </div>
 </div>
+
+
 

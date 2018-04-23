@@ -12,6 +12,7 @@
   <meta content="Automated recovery software. RSoftware is a repossession software management system solution." name="description"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <link href="https://uploads-ssl.webflow.com/5a15d29e58352800010ead96/css/recoveryunit.7693b9510.min.css" rel="stylesheet" type="text/css"/>
+    <%= stylesheet_link_tag "application", :media => "all" %>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript">
   </script>
   <script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"]  }});</script>
@@ -47,16 +48,10 @@
 
   <!-- BODY -->
 
-  <section data-ix="reduce-nav-bar-on-scroll" id="TopOfPage" class="body-wrapper">
-    
+  <section data-ix="reduce-nav-bar-on-scroll" class="body-wrapper">
 <!--FLASH MESSAGES-->
-<div class="w-form-done">
-  <div><%= bootstrap_flash %>
-  </div>
-</div>
-
-
-<%= yield %>
+    <%= render 'layouts/messages' %>
+      <%= yield %>
 
     
     
@@ -65,10 +60,6 @@
 
 
 
-
-  </section>
-  
-  
   
   
   
@@ -81,7 +72,7 @@
     <!--FOOTER -->
 
 
-    <section class="sec">
+    <section data-ix="fade-effect" class="sec">
       <footer class="footer">
         <div class="sec sec--navy">
           <div class="cont">
@@ -141,6 +132,10 @@
     </section>
 
 
+
+  </section>
+  
+  
 
 
 

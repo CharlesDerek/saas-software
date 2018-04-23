@@ -12,7 +12,7 @@
         <div class="form-container">
           <div class="gap--big">
             <h1 class="h1--form-login">Welcome Back!</h1>
-            <%= bootstrap_devise_error_messages! %>
+            <%= devise_error_messages! %>
           </div>
           <div class="w-form" data-ix="fade-effect">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
