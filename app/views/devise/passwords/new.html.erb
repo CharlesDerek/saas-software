@@ -14,7 +14,7 @@
             <h1 class="h1--form-login"><%= t('.forgot_your_password', :default => 'Forgot your password?') %></h1>
           </div>
           <div class="w-form" data-ix="fade-effect">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: "form" }) do |f| %>
+            <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
               <div class="w-row">
                 <div class="gap--med">
                   <label for="email" class="field-label">Account email</label>
@@ -58,12 +58,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- Below is the ruby tag for links to include html raw -->
-<!--< %= link_to(raw("lalalalhtmlallalalalal"),{:pics => true},{ :class => 'highlight'})  % >-->
-
-
-
-<%= render "devise/shared/links" %>
