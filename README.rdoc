@@ -167,3 +167,12 @@ A) Has issues showing successful redirect out of sign up page
  2. if doesn't work try checking form on registrations/new.html.erb
  3. else, try looking into controller files and see if redirect issue is there
  4. else, check stripe javascript file to see if this plays a role in showing proper pages 
+ 
+ 
+ 
+LAST ISSUE WORKED ON 
+deleting project gives issue on db for destroying 
+
+
+https://stackoverflow.com/questions/28996773/error-delete-on-table-violates-foreign-key-constraint-key-id-is-still-referenc?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+is closest help found

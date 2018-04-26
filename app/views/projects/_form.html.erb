@@ -1,42 +1,133 @@
-<%= form_for [@tenant, @project], :html => { :class => "form-horizontal project" } do |f| %>
 
-    <% if @project.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @project.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<!-- NEW FORM BELOW with Bootstrap OLD ONE ABOVE -->
 
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'form-control' %>
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+
+
+<!-- NEW FORM FOR DATE -->
+<div class="sec sec--hero">
+  <div class="cont">
+    <div class="cont--small">
+      <div class="text--center">
+        <div class="angle-container angle-container--form">
+          <div class="angle--top">
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="gap--big">            
+            <% if @project.errors.any? %>
+              <div id="error_expl" class="panel panel-danger">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                  <% @project.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="w-form" data-ix="fade-effect">
+            <%= form_for [@tenant, @project], :html => { :class => "form" } do |f| %>
+              <div class="w-row">
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <%= f.label :title, :class => 'field-label' %>
+                    <%= f.text_field :title, :class => 'input--text w-input' %>
+                  </div>
+                  <div class="gap--med">
+                    <%= f.label :expected_completion_date, :class => 'field-label' %>
+                    <%= f.text_field :expected_completion_date, class: 'input--text w-input', id: 'date'  %>
+                    <!-- < %= f.email_field :email, autofocus: true, class: "input- -text w-input", type: "email", maxlength: "256", placeholder: "new@example.com", required: "true" %> -->
+                  </div>
+                </div>
+              </div>
+              <div class="gap--med">
+                <%= f.label :details, :class => 'field-label' %>
+                <%= f.text_area :details, :class => 'new-textbox-regist w-input' %>
+              </div>
+              <div class="col">
+                <div class="form-error">
+                  <div class="form-error--text">Error message.</div>
+                </div>
+              </div>
+              
+              <div class="gap--med">
+              </div>
+              <div class="gap--small">
+                <div data-ix="button-hover" class="submit-container">
+
+
+
+                  <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
+                  <%= f.submit nil, value: "", :class => 'button button-submit w-button' %>
+                  <div class="send-to-back">
+                    <a href="#" id="submit-form" class="buttonconversion w-inline-block">
+                      <div class="button--move">
+                        <div class="button--text">Submit
+                        </div>
+                        <div class="button--ico-right">
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="w-form-done">
+              <div id="form-feedback">Thank you! Your submission has been received!
+              </div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form</div>
+            </div>
+          </div>
+        </div>
+        <div class="angle-container angle-container--form">
+          <div class="angle--bottom">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :details, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :details, :class => 'form-control' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :expected_completion_date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :expected_completion_date, :class => 'form-control datepicker' %>
-    </div>
-  </div>
-  <br />
-  <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+</div>
+
+
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            root_path, :class => 'btn btn-default' %>
+            root_path, :class => 'button-2-danger w-button' %>
 
-<% end %>
+
+
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    var date_input=$('input[name="date"]'); //our date input has the name "date"
+    var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+      format: 'yyyy/mm/dd',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    })
+  })
+</script>
