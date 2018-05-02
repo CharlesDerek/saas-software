@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'connect/support', to: 'connect#support'
   resources :user_projects
   resources :artifacts
   resources :tenants do
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
    root :to => "home#index"
+   post '/connect' => 'connect#support'
 
     
   # *MUST* come *BEFORE* devise's definitions (below)

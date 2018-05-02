@@ -171,7 +171,10 @@ A) Has issues showing successful redirect out of sign up page
  
  
 LAST ISSUE WORKED ON 
-deleting project gives issue on db for destroying 
+1. deleting project gives issue on db for destroying
+2. connect/support 
+fixing email form (inside sublime text)
+merge template with html
 
 
 https://stackoverflow.com/questions/28996773/error-delete-on-table-violates-foreign-key-constraint-key-id-is-still-referenc?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa

@@ -13,12 +13,15 @@
           <div class="gap--big">
             <h1 class="h1--form-login"><%= t('.forgot_your_password', :default => 'Forgot your password?') %></h1>
           </div>
+          <div class="gap--big">
+            <span class="field-label--required">No problem. Just input your email below, so we can send you instructions.</span>
+          </div>
           <div class="w-form" data-ix="fade-effect">
             <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, role: "form" }) do |f| %>
               <div class="w-row">
                 <div class="gap--med">
                   <label for="email" class="field-label">Account email</label>
-                  <%= f.email_field :email, autofocus: true, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "user@example.com", required: "true" %>
+                  <%= f.email_field :email, autofocus: false, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "user@example.com", required: "true" %>
                 </div>
                 <div class="col">
                   <div class="form-error">

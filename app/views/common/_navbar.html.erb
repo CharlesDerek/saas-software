@@ -52,7 +52,7 @@
           <% else %>
             <a href="/users/sign_in" class="navlink-2 w-nav-link">sign in</a>
             <a href="/" class="navlink-2 w-nav-link">forgotpassword</a>
-            <a href="/" class="navlink-2 w-nav-link">support</a>            
+            <%= link_to ('Support').html_safe, connect_support_path, class: 'navlink-2 w-nav-link' %>
             <div class="nav--button">
               <a data-ix="button-hover" href="/users/sign_up" class="button button--open button--open--bright w-inline-block">
                 <div class="button--move">
@@ -129,15 +129,15 @@
               </div>
               <nav class="dropdown-list w-dropdown-list">
                 <a href="/" class="navlink--dropdown w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-dropdown-link">Webinar</a>
-                <a href="/" class="navlink--dropdown w-dropdown-link">link for sign in fix</a>
-                <a href="/" class="navlink--dropdown w-dropdown-link">link for lost password fix</a>
-                <a href="/" class="navlink--dropdown w-dropdown-link">Blog</a>
+                
+            <b><%= link_to ('Edit Profile').html_safe, edit_user_registration_path, class: 'navlink--dropdown w-dropdown-link' %></b>
+            <br>
+                <a href="/" class="navlink--dropdown w-dropdown-link">Projects</a>
               </nav>
             </div>
           <% else %>
             <a href="/" class="navlink-2 w-nav-link">Home</a>
-            <a href="/users/sign_in" class="navlink-2 w-nav-link">sign in</a>
-            <a href="/" class="navlink-2 w-nav-link">support</a>
+            <%= link_to ('Support').html_safe, connect_support_path, class: 'navlink-2 w-nav-link' %>
             <div class="nav--button">
               <a data-ix="button-hover" href="/users/sign_up" class="button button--open button--open--bright w-inline-block">
                 <div class="button--move">
@@ -152,6 +152,19 @@
                   </div>
                 </div>
               </a>
+            </div>
+            
+
+            <div data-delay="0" class="dropdown-button w-dropdown">
+              <div class="dropdown w-dropdown-toggle">
+                <div class="ico--dropdown w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny w-icon-dropdown-toggle">
+                </div>
+                <div>More</div>
+              </div>
+              <nav class="dropdown-list w-dropdown-list">
+                <a href="/users/sign_in" class="navlink--dropdown w-dropdown-link">Sign In</a><br>
+                <a href="/users/password/new" class="navlink--dropdown w-dropdown-link">Forgot Password?</a>
+              </nav>
             </div>
         <% end %>
       </div>

@@ -1,31 +1,96 @@
 <%= bootstrap_devise_error_messages! %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h4>
-  </div>
-  <div class="panel-body">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+<div class="sec sec--hero">
+  <div class="cont">
+    <div class="cont--small">
+      <div class="text--center">
+        <div class="angle-container angle-container--form">
+          <div class="angle--top">
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="gap--big">
+            <h1 class="h1--form-login"><%= t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") %></h1>
+                      <span class="field-label--required">Leave blank, unless you want to make changes.</span>
+          </div>
+          <div class="w-form" data-ix="fade-effect">
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form' }) do |f| %>
+              <div class="w-row">
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <%= f.label :email, class: 'field-label' %>
+                    <%= f.email_field :email, autofocus: false, class: "input--text w-input", maxlength: "256", placeholder: "youremail@example.com", required: "true" %>
+                  </div>
+                  <div class="gap--med">
+                    <label class="field-label"> Current Password
+                      <span class="field-label--required">(Exsisting password)</span>
+                    </label>
+                    <%= f.password_field :current_password, maxlength: "256", class: "input--text w-input" %>
+                  </div>
+                </div>
+                <div class="col w-col w-col-6">
+                  <div class="gap--med">
+                    <label class="field-label">New Password
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <%= f.password_field :password, :autocomplete => "off", maxlength: "256", class: "input--text w-input" %>
+                  </div>
+                  <div class="gap--med">
+                    <label class="field-label"> New Password Confirmation
+                      <span class="field-label--required">(required)</span>
+                    </label>
+                    <%= f.password_field :password_confirmation, maxlength: "256", class: "input--text w-input"  %>
+                  </div>
+                </div>               
+              </div>
+
+
+
+
+
+
+              <div class="col">
+                <div class="form-error">
+                  <div class="form-error--text">Error message.</div>
+                </div>
+              </div>
+              <div class="gap--small">
+                <div data-ix="button-hover" class="submit-container">
+                  <%= f.submit t('.update', :default => "Update"), value: "", class: "button button-submit w-button" %>
+                  <div class="send-to-back">
+                    <a href="#" id="submit-form" class="buttonconversion w-inline-block">
+                      <div class="button--move">
+                        <div class="button--text">Update
+                        </div>
+                        <div class="button--ico-right">
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="w-form-done">
+              <div id="form-feedback">Thank you! Your submission has been received!
+              </div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form</div>
+            </div>
+          </div>
+        </div>
+        <div class="angle-container angle-container--form">
+          <div class="angle--bottom">
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
-        <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, class: "form-control"  %>
-      </div>
-      <div class="form-group">
-        <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes') %>)</i>
-        <%= f.password_field :current_password, class: "form-control" %>
-      </div>
-      <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
-    <% end %>
+    </div>
   </div>
 </div>
 
-<p><%= t('.unhappy', :default => 'Unhappy') %>? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete %>.</p>
 
-<%= link_to t('.back', :default => 'Back'), :back %>
+
+
+<div class="cont">
+  <h5><%= t('.unhappy', :default => 'Unhappy') %>? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), :data => { :confirm => t('.are_you_sure', :default => "Are you sure?") }, :method => :delete, :class => 'button-2-danger w-button' %></h5>
+  <%= link_to t('.back', :default => 'Back'), :back, class: "link--inline link--inline_alernative"  %>
+</div>

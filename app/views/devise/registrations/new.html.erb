@@ -26,7 +26,7 @@
                     <label for="firstname" class="field-label">First name 
                       <span class="field-label--required">(required)</span>
                     </label>
-                    <input type="text" class="input--text w-input" maxlength="256" autofocus="true" name="firstname" data-name="firstname" id="firstname" required=""/>
+                    <input type="text" class="input--text w-input" maxlength="256" autofocus="false" name="firstname" data-name="firstname" id="firstname" required=""/>
                   </div>
                   <div class="gap--med">
                     <label for="lastname" class="field-label">Last name 
@@ -37,7 +37,7 @@
                   <div class="gap--med">
                     <label for="email" class="field-label">Work email <span class="field-label--required">(required)</span>
                     </label>
-                    <%= f.email_field :email, autofocus: true, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "new@example.com", required: "true" %>
+                    <%= f.email_field :email, autofocus: false, class: "input--text w-input", type: "email", maxlength: "256", placeholder: "new@example.com", required: "true" %>
                   </div>
                 </div>               
                 <%= fields_for( :tenant ) do |w| %>

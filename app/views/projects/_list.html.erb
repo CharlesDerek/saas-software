@@ -60,23 +60,20 @@
           <h1 class="lead">You don't have any projects to list.</h1>
       </div>
       <div></div>
-      <div class="angle-container">
-        <div class="angle--top"></div>
-        <div class="angle-title">
-          <div class="jumbo" data-ix="fade-effect">Benefits</div>
-        </div>
-      </div>
 
 
 <% end %>
 
       <% if (@tenant.can_create_projects?) %>
-        <%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
-              :class => 'btn btn-primary' %>
+        <div class="cont">
+          <%= link_to 'Create A New Project', new_tenant_project_path(tenant_id: @tenant.id),
+                        :class => 'button-2 w-button' %>
+        </div>
       <% end %>
 
-<%= truncate("Once upon a time in a world far far away", :length => 20, :separator => ' ') %>
 
 
-<%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id),
-              :class => 'btn btn-primary' %>
+
+
+<!--this code below shortens text that gets too long to display-->
+<!--< %= truncate("Once upon a time in a world far far away", :length => 20, :separator => ' ') %>-->
