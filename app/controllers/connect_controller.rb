@@ -1,10 +1,14 @@
 class ConnectController < ApplicationController
     
     
-  skip_before_action :authenticate_tenant!, :only => [:support, :subscribe]
+  skip_before_action :authenticate_tenant!, :only => [:support, :privacy, :subscribe]
 
     def support
     
+    end
+    
+    def privacy
+      
     end
 
     def subscribe

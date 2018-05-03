@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'connect/support', to: 'connect#support'
+  get 'connect/privacy'
   resources :user_projects
   resources :artifacts
   resources :tenants do

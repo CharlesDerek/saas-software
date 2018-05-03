@@ -137,7 +137,7 @@
             </div>
           <% else %>
             <a href="/" class="navlink-2 w-nav-link">Home</a>
-            <%= link_to ('Support').html_safe, connect_support_path, class: 'navlink-2 w-nav-link' %>
+          <%= link_to('Sign In', new_user_session_path, class: 'navlink-2 w-nav-link', title: 'Sign In') %>
             <div class="nav--button">
               <a data-ix="button-hover" href="/users/sign_up" class="button button--open button--open--bright w-inline-block">
                 <div class="button--move">
@@ -162,7 +162,7 @@
                 <div>More</div>
               </div>
               <nav class="dropdown-list w-dropdown-list">
-                <a href="/users/sign_in" class="navlink--dropdown w-dropdown-link">Sign In</a><br>
+                <%= link_to ('Support').html_safe, connect_support_path, class: 'navlink--dropdown w-dropdown-link' %><br>
                 <a href="/users/password/new" class="navlink--dropdown w-dropdown-link">Forgot Password?</a>
               </nav>
             </div>
