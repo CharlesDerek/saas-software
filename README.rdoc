@@ -7,7 +7,7 @@ need to first create an rails app with { rails new newappname }
 
 After finished installing bring terminal inside file
 
-delete files you intend to replace (be careful replacing *gitignore and gemlock file, also that gemfile that is replaced doesn't have outdated syntaxes)
+delete files you intend to replace (be careful replacing *gitignore and gemlock file, also tat gemfile that is replaced doesn't have outdated syntaxes)
 
 paste new files
 
@@ -17,6 +17,28 @@ will possibly say issues with postgres id (from copied app) is already in use. S
 
 The link below will explain the issue with grabbing a finished project already having a pg db id (in files database.yml)
 https://stackoverflow.com/questions/19828385/pgconnectionbad-could-not-connect-to-server-connection-refused
+
+\du list users
+
+First login as postgres user:
+
+sudo su - postgres
+psql
+
+then \l shows projects with \q as exit
+
+rake db:drop db:create db:migrate
+
+
+
+CREATE DATABASE mrgi_production  WITH OWNER yourname;
+connect to the required db: psql -d databaseName
+
+\dt would return the list of all table in the database you're connected to.
+
+sudo service postgresql start
+
+gem install pg
 
 finish initial edits (versions etc) before deploy..
 
@@ -28,6 +50,13 @@ finish initial edits (versions etc) before deploy..
     source "https://rubygems.org"
     ruby "2.2.4"
     }
+
+rm postmaster.pid
+
+bundle install
+
+rake db:drop db:create db:migrate
+
 
 Phase 2: Push project
 Git Init
@@ -179,3 +208,12 @@ merge template with html
 
 https://stackoverflow.com/questions/28996773/error-delete-on-table-violates-foreign-key-constraint-key-id-is-still-referenc?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 is closest help found
+
+Cloud9 Help
+You may be using the wrong PORT & IP for your server application.For rails, use: 'rails s -p $PORT -b $IP'
+For Sinatra, use:
+ruby app.rb -p $PORT -o $IP'.
+
+
+
+testing git push
