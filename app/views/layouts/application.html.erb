@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
   <!-- Last Published: Mon Apr 09 2018 21:57:37 GMT+0000 (UTC) -->
-<html data-wf-domain="recoveryunit.webflow.io" data-wf-page="5a15e2e5b1b09d0001915c7d" data-wf-site="5a15d29e58352800010ead96">
+<html data-wf-domain="www.recoveryunits.com" data-wf-page="5a15e2e5b1b09d0001915c7d" data-wf-site="5a15d29e58352800010ead96">
 <!-- HEADER -->
 <head>
   <meta charset="utf-8"/>
@@ -26,6 +26,16 @@ function redirectHttpToHttps()
 if (window.location.protocol == "http:") {
     redirectHttpToHttps();
 } else null
+</script>
+<script>
+  function redirectHost() {
+    var PathAndSearch= "https://www.recoveryunits.com" + window.location.pathname + window.location.search;
+    window.location = PathAndSearch;
+  }
+  
+if (window.location.host == "saas-software-app.herokuapp.com") {
+  redirectHost();
+}
 </script>
 
   <script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"]  }});</script>
